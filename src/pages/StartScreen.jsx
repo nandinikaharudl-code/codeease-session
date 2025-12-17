@@ -1,37 +1,24 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "./StartScreen.css";
 
 const StartScreen = () => {
   const navigate = useNavigate();
 
-  const handleDifficultySelect = (difficulty) => {
-    navigate("/game", { state: { difficulty } });
+  const startGame = (level) => {
+    navigate("/game", { state: { difficulty: level } });
   };
 
   return (
-    <div className="container">
-      <h1 className="title">Welcome to the Game!</h1>
-      <p className="subtitle">Select your difficulty level to start:</p>
-      <div className="buttonContainer">
-        <button
-          className="button"
-          onClick={() => handleDifficultySelect("Easy")}
-        >
-          Easy
-        </button>
-        <button
-          className="button"
-          onClick={() => handleDifficultySelect("Medium")}
-        >
-          Medium
-        </button>
-        <button
-          className="button"
-          onClick={() => handleDifficultySelect("Hard")}
-        >
-          Hard
-        </button>
+    <div className="page">
+      <div className="container">
+        <h1>Welcome to the Game!</h1>
+        <p>Select your difficulty level to start:</p>
+
+        <div className="button-group">
+          <button onClick={() => startGame("Easy")}>Easy</button>
+          <button onClick={() => startGame("Medium")}>Medium</button>
+          <button onClick={() => startGame("Hard")}>Hard</button>
+        </div>
       </div>
     </div>
   );
